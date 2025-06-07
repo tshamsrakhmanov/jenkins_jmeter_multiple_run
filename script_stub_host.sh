@@ -14,4 +14,8 @@ echo "Current dir: ${current_dir}"
 cd stub/
 current_dir=$(pwd)
 echo "Current dir: ${current_dir}"
-cat pom.xml
+
+
+mvn package
+
+nohup java -jar -Dserver.port=1235 ./target/stub-1.jar > /dev/null 2>&1 &
