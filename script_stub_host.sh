@@ -1,5 +1,7 @@
 #! /bin/bash
 
 echo " ---> SCRIPT FOR STUB HOST"
-hostname
-hostname -i
+host_name=$(hostname)
+host_ip=$(hostname -I)
+echo "SERVER : ${host_name}"
+echo "	  IP : ${host_ip}"
