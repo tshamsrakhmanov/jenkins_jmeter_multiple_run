@@ -13,20 +13,26 @@ pipeline {
 	
         stage('step1 - copy git') {
             steps {
-                git url: REPO_LINK,
-				branch: REPO_BRANCH
+				timeout(time: 10, unit: 'MINUTES') { 
+                    git url: REPO_LINK,
+					branch: REPO_BRANCH
+                }
             }
         }
 		
 		stage('step2 - run script 1 - make file and write date') {
             steps {
+				timeout(time: 10, unit: 'MINUTES') {
 				sh 'bash test_script.sh'
+				}
             }
         }
 		
 		stage('step3 - run script 2 - read file with the date') {
             steps {
+				timeout(time: 10, unit: 'MINUTES') {
 				sh 'bash test_script_2.sh'
+				}
             }
         }
 
