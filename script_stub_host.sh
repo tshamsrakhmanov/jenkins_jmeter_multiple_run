@@ -14,10 +14,6 @@ echo "Current dir: ${current_dir}"
 cd stub/
 current_dir=$(pwd)
 echo "Current dir: ${current_dir}"
-cd target/
-current_dir=$(pwd)
-echo "Current dir: ${current_dir}"
-
 
 mvn package
 
@@ -25,6 +21,10 @@ while [ ! -f "stub-1.jar" ]; do
 	echo "wait for JAR file to compile"
     sleep 1  # Check every second
 done
+
+cd target/
+current_dir=$(pwd)
+echo "Current dir: ${current_dir}"
 
 
 nohup java -jar stub-1.jar > stub-1.out 2>&1 &
