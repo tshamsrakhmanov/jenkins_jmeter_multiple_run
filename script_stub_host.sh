@@ -16,15 +16,3 @@ current_dir=$(pwd)
 echo "Current dir: ${current_dir}"
 
 mvn package
-
-cd target/
-current_dir=$(pwd)
-echo "Current dir: ${current_dir}"
-
-while [ ! -f "stub-1.jar" ]; do
-	echo "wait for JAR file to compile"
-    sleep 1  # Check every second
-done
-
-
-nohup java -jar stub-1.jar &
