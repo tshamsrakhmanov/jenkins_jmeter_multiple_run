@@ -1,7 +1,7 @@
 pipeline {
-    agent {
-        label 'server2'
-    }
+
+	agent none
+    
     
     environment {
         REPO_LINK = 'https://github.com/tshamsrakhmanov/jenkins_jmeter_multiple_run.git'
@@ -11,31 +11,48 @@ pipeline {
     
     stages {
 	
-        stage('step1 - copy git') {
+        stage('SERVER2 - JMETER HEAD - SCRIPT') {
+			agent { label 'server2' }
             steps {
 				timeout(time: 10, unit: 'MINUTES') { 
                     git url: REPO_LINK,
 					branch: REPO_BRANCH
                 }
+				sh 'bash jmeter_base.sh'
             }
         }
 		
-		stage('step2 - run script 1 - make file and write date') {
+		stage('SERVER3 - JMETER NODE1 - SCRIPT') {
+			agent { label 'server3' }
             steps {
-				timeout(time: 10, unit: 'MINUTES') {
-				sh 'bash test_script.sh'
-				}
+				timeout(time: 10, unit: 'MINUTES') { 
+                    git url: REPO_LINK,
+					branch: REPO_BRANCH
+                }
+				sh 'bash jmeter_node.sh'
             }
         }
 		
-		stage('step3 - run script 2 - read file with the date') {
+		stage('SERVER4 - JMETER NODE2 - SCRIPT') {
+			agent { label 'server4' }
             steps {
-				timeout(time: 10, unit: 'MINUTES') {
-				sh 'bash test_script_2.sh'
-				}
+				timeout(time: 10, unit: 'MINUTES') { 
+                    git url: REPO_LINK,
+					branch: REPO_BRANCH
+                }
+				sh 'bash jmeter_node.sh'
             }
         }
-
+		
+		stage('SERVER5 - STUB HOST - SCRIPT') {
+			agent { label 'server5' }
+            steps {
+				timeout(time: 10, unit: 'MINUTES') { 
+                    git url: REPO_LINK,
+					branch: REPO_BRANCH
+                }
+				sh 'bash script_stub_host.sh'
+            }
+        }
     }
-
 }
