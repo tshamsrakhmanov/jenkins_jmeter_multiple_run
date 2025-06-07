@@ -11,3 +11,7 @@ kill -9 $(ps aux | grep 'stub-1.jar' | grep -v grep | awk '{print $2}')
 
 current_dir=$(pwd)
 echo "Current dir: ${current_dir}"
+cd stub/
+current_dir=$(pwd)
+echo "Current dir: ${current_dir}"
+cat pom.xml
