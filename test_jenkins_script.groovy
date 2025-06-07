@@ -14,7 +14,7 @@ pipeline {
         stage('step1 - copy git') {
             steps {
                 git url: 'https://github.com/tshamsrakhmanov/jenkins_jmeter_multiple_run.git',
-				branch: 'your-branch-name'
+				branch: 'main'
             }
         }
 		
