@@ -18,11 +18,15 @@ pipeline {
             }
         }
 		
-		stage('step2 - run the script') {
+		stage('step2 - run script 1 - make file and write date') {
             steps {
-
 				sh 'bash test_script.sh'
-
+            }
+        }
+		
+		stage('step3 - run script 2 - read file with the date') {
+            steps {
+				sh 'bash test_script_2.sh'
             }
         }
 
