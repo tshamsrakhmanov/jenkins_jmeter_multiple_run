@@ -16,11 +16,20 @@ check_java() {
 	fi
 }
 
+check_mvn() {
+	if command -v mvn &> /dev/null; then
+		echo 1
+	else
+		echo 0
+	fi
+}
+
 
 main() {
 
 	check_java=$(check_java)
 	check_jmeter=$(jmeter)
+	check_maven=$(check_mvn)
 	
 	if [ "${check_java}" == "0" ]; then
 		exit 1
@@ -33,6 +42,12 @@ main() {
 	fi
 	
 	echo "JMETER OK"
+	
+	if [ "${check_maven}" == "0" ]; then
+		exit 1
+	fi
+	
+	echo "MAVEN OK"
 
 }
 
