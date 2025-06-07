@@ -1,4 +1,4 @@
 #! /bin/bash
 
 touch test_file
-echo date > test_file
+date > test_file
