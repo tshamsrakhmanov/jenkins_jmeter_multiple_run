@@ -10,20 +10,19 @@ pipeline {
     }
     
     stages {
+	
         stage('step1 - copy git') {
             steps {
                 git url: 'https://github.com/your/repo.git'
             }
         }
-
-    }
-	
-	stages {
-        stage('step2 - run the script') {
+		
+		stage('step2 - run the script') {
             steps {
                 sh test_script.sh
             }
         }
 
     }
+
 }
