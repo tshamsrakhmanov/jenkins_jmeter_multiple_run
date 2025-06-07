@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class RestController {
     @GetMapping(value = "/get_sample")
     public String get_uuid_list() {
+        System.out.println("returned answer");
         return "ANSWER";
     }
 }
