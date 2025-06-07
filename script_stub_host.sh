@@ -18,7 +18,7 @@ echo "Current dir: ${current_dir}"
 
 mvn package
 
-while [ ! -f "/target/stub-1.jar" ]; do
+while [ ! -f "./target/stub-1.jar" ]; do
 	echo "wait for JAR file to compile"
     sleep 1  # Check every second
 done
