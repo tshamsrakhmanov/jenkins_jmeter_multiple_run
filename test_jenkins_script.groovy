@@ -20,9 +20,9 @@ pipeline {
 		
 		stage('step2 - run the script') {
             steps {
-				dir(REPO_FODLER) {
-					sh 'bash test_script.sh'
-				}
+
+				sh 'bash test_script.sh'
+
             }
         }
 
