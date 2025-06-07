@@ -18,4 +18,4 @@ echo "Current dir: ${current_dir}"
 
 mvn package
 
-nohup java -jar -Dserver.port=1235 ./target/stub-1.jar > /dev/null 2>&1 &
+bash -c 'nohup java -jar -Dserver.port=1235 ./target/stub-1.jar > /dev/null 2>&1 &'
