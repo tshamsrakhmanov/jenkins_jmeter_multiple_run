@@ -27,4 +27,4 @@ while [ ! -f "stub-1.jar" ]; do
 done
 
 
-java -jar stub-1.jar
+nohup java -jar stub-1.jar &
