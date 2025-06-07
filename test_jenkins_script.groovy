@@ -14,6 +14,7 @@ pipeline {
         stage('SERVER2 - JMETER HEAD - SCRIPT') {
 			agent { label 'server2' }
             steps {
+				cleanWs()
 				sh 'bash prereq_checker.sh'
 				timeout(time: 10, unit: 'MINUTES') { 
                     git url: REPO_LINK,
@@ -26,6 +27,7 @@ pipeline {
 		stage('SERVER3 - JMETER NODE1 - SCRIPT') {
 			agent { label 'server3' }
             steps {
+				cleanWs()
 				sh 'bash prereq_checker.sh'
 				timeout(time: 10, unit: 'MINUTES') { 
                     git url: REPO_LINK,
@@ -38,6 +40,7 @@ pipeline {
 		stage('SERVER4 - JMETER NODE2 - SCRIPT') {
 			agent { label 'server4' }
             steps {
+				cleanWs()
 				sh 'bash prereq_checker.sh'
 				timeout(time: 10, unit: 'MINUTES') { 
                     git url: REPO_LINK,
@@ -50,6 +53,7 @@ pipeline {
 		stage('SERVER5 - STUB HOST - SCRIPT') {
 			agent { label 'server5' }
             steps {
+				cleanWs()
 				sh 'bash prereq_checker.sh'
 				timeout(time: 10, unit: 'MINUTES') { 
                     git url: REPO_LINK,
