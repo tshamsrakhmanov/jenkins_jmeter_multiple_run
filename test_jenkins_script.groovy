@@ -60,7 +60,7 @@ pipeline {
                 }
 				sh 'bash prereq_checker.sh'
 				sh 'bash script_stub_host.sh'
-				sh 'nohup java -jar ./target/stub-1.jar > stub1.log 2>&1 &'
+				sh 'nohup java -jar ./stub/target/stub-1.jar > stub1.log 2>&1 &'
 
             }
         }
