@@ -16,4 +16,12 @@ current_dir=$(pwd)
 echo "Current dir: ${current_dir}"
 
 
-mvn package && nohup java -jar -Dserver.port=1235 ./target/stub-1.jar > /dev/null 2>&1 &
+mvn package
+
+while [ ! -f "/target/stub-1.jar" ]; do
+	echo "wait for JAR file to compile"
+    sleep 1  # Check every second
+done
+
+
+nohup java -jar -Dserver.port=1235 ./target/stub-1.jar > /dev/null 2>&1 &
