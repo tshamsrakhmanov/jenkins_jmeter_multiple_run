@@ -24,4 +24,4 @@ while [ ! -f "./target/stub-1.jar" ]; do
 done
 
 
-nohup java -jar -Dserver.port=1235 ./target/stub-1.jar > /dev/null 2>&1 &
+nohup java -jar -Dserver.port=1235 ./target/stub-1.jar > stub-1.out 2>&1 &
