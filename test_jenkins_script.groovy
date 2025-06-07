@@ -1,26 +1,28 @@
 pipeline {
     agent {
-        label 'server2'  // Targets a specific agent
-        // or use 'any' to run on any available agent
+        label 'server2'
     }
     
     environment {
-        TEST_VALUE_1 = '1'
-        TEST_VALUE_2 = '2'
+        REPO_LINK = 'https://github.com/tshamsrakhmanov/jenkins_jmeter_multiple_run.git'
+        REPO_BRANCH = 'main'
+		REPO_FODLER = 'jenkins_jmeter_multiple_run'
     }
     
     stages {
 	
         stage('step1 - copy git') {
             steps {
-                git url: 'https://github.com/tshamsrakhmanov/jenkins_jmeter_multiple_run.git',
-				branch: 'main'
+                git url: REPO_LINK,
+				branch: REPO_BRANCH
             }
         }
 		
 		stage('step2 - run the script') {
             steps {
-                sh test_script.sh
+				dir(REPO_FODLER) {
+					sh test_script.sh
+				}
             }
         }
 
