@@ -47,11 +47,6 @@ pipeline {
                 }
 				sh 'bash prereq_checker.sh'
 				sh 'bash script_stub_host.sh'
-				sh '''
-					nohup java -jar ./stub/target/stub-1.jar > stub1.log 2>&1 &
-					echo $! > stub1.pid  # Save PID to file
-				'''
-
             }
         }
 		
@@ -66,7 +61,7 @@ pipeline {
 				sh 'bash prereq_checker.sh'
 				sh 'bash jmeter_base.sh'
 				timeout(time: 1, unit: 'MINUTES') { 
-                    sh 'jmeter -n performance_test.jmx'
+                    sh 'jmeter -n -t performance_test.jmx'
                 }
             }
         }
