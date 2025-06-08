@@ -13,13 +13,15 @@ echo "SERVER : ${host_name}"
 echo "IP : ${host_ip}"
 echo "$(whoami)"
 
+
+# commented - due to not usability of a jar-run process under jenkins exec. all the processes just stops after finish of jenkins job.
 #
 # kill any other stubs processes:
 #
-echo " #########################"
-echo " ---> TRY TO KILL STUB PROCESSES"
-echo " #########################"
-kill -9 $(ps aux | grep 'stub-1.jar' | grep -v grep | awk '{print $2}')
+# echo " #########################"
+# echo " ---> TRY TO KILL STUB PROCESSES"
+# echo " #########################"
+# kill -9 $(ps aux | grep 'stub-1.jar' | grep -v grep | awk '{print $2}')
 
 #
 # stop all docker containers
@@ -51,3 +53,13 @@ current_dir=$(pwd)
 echo "Current dir: ${current_dir}"
 
 mvn package
+
+#
+# build new image of stub
+#
+docker build -t stub_1 .
+
+#
+# build new image of stub
+#
+docker run -d stub_1:latest
