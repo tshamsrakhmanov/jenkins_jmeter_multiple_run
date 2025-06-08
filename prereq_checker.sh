@@ -1,11 +1,6 @@
 #! /bin/bash
 
 check_jmeter() {
-	# if command -v javac &> /dev/null; then
-		# echo 1
-	# else
-		# echo 0
-	# fi
 	
 	if [ -f "~/distrib/apache-jmeter-5.6.3/bin/ApacheJMeter.jar" ]; then
 		echo 1

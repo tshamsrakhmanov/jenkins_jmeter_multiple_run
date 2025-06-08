@@ -11,32 +11,6 @@ pipeline {
     
     stages {
 		
-		// stage('SERVER3 - JMETER NODE1 - SCRIPT') {
-			// agent { label 'server3' }
-            // steps {
-				// cleanWs()
-				// timeout(time: 10, unit: 'MINUTES') { 
-                    // git url: REPO_LINK,
-					// branch: REPO_BRANCH
-                // }
-				// sh 'bash prereq_checker.sh'
-				// sh 'bash jmeter_node.sh'
-            // }
-        // }
-		
-		// stage('SERVER4 - JMETER NODE2 - SCRIPT') {
-			// agent { label 'server4' }
-            // steps {
-				// cleanWs()
-				// timeout(time: 10, unit: 'MINUTES') { 
-                    // git url: REPO_LINK,
-					// branch: REPO_BRANCH
-                // }
-				// sh 'bash prereq_checker.sh'
-				// sh 'bash jmeter_node.sh'
-            // }
-        // }
-		
 		stage('SERVER5 - STUB HOST - SCRIPT') {
 			agent { label 'server5' }
             steps {
@@ -50,7 +24,7 @@ pipeline {
             }
         }
 		
-		stage('SERVER2 - JMETER HEAD - SCRIPT') {
+		stage('SERVER2 - JMETER NODE') {
 			agent { label 'server2' }
             steps {
 				cleanWs()
