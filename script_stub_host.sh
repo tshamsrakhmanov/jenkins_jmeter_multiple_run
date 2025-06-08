@@ -57,13 +57,13 @@ mvn package
 #
 # build new image of stub
 #
+cd ..
+current_dir=$(pwd)
+echo "Current dir: ${current_dir}"
 docker build -t stub_1 .
 
 #
 # build new image of stub
 #
-cd ..
-current_dir=$(pwd)
-echo "Current dir: ${current_dir}"
 
 docker run -d stub_1:latest
