@@ -10,19 +10,6 @@ pipeline {
     }
     
     stages {
-	
-        // stage('SERVER2 - JMETER HEAD - SCRIPT') {
-			// agent { label 'server2' }
-            // steps {
-				// cleanWs()
-				// timeout(time: 10, unit: 'MINUTES') { 
-                    // git url: REPO_LINK,
-					// branch: REPO_BRANCH
-                // }
-				// sh 'bash prereq_checker.sh'
-				// sh 'bash jmeter_base.sh'
-            // }
-        // }
 		
 		// stage('SERVER3 - JMETER NODE1 - SCRIPT') {
 			// agent { label 'server3' }
@@ -65,6 +52,22 @@ pipeline {
 					echo $! > stub1.pid  # Save PID to file
 				'''
 
+            }
+        }
+		
+		stage('SERVER2 - JMETER HEAD - SCRIPT') {
+			agent { label 'server2' }
+            steps {
+				cleanWs()
+				timeout(time: 10, unit: 'MINUTES') { 
+                    git url: REPO_LINK,
+					branch: REPO_BRANCH
+                }
+				sh 'bash prereq_checker.sh'
+				sh 'bash jmeter_base.sh'
+				timeout(time: 1, unit: 'MINUTES') { 
+                    sh 'jmeter -n performance_test.jmx'
+                }
             }
         }
     }
