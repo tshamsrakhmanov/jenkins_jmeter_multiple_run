@@ -34,22 +34,10 @@ pipeline {
                 }
 				sh 'bash prereq_checker.sh'
 				sh 'bash jmeter_base.sh'
-                sh 'java -jar ~/distrib/apache-jmeter-5.6.3/bin/ApacheJMeter.jar -n -t performance_test.jmx'
+                // sh 'java -jar ~/distrib/apache-jmeter-5.6.3/bin/ApacheJMeter.jar -n -t performance_test.jmx'
+				sh 'java -jar ~/distrib/apache-jmeter-5.6.3/bin/ApacheJMeter.jar -n -t performance_test.jmx -l results.jtl -r'
             }
         }
-		
-		stage('SERVER3 - JMETER NODE - SCRIPT') {
-			agent { label 'server3' }
-            steps {
-				cleanWs()
-				timeout(time: 10, unit: 'MINUTES') { 
-                    git url: REPO_LINK,
-					branch: REPO_BRANCH
-                }
-				sh 'bash prereq_checker.sh'
-				sh 'bash jmeter_node.sh'
-                sh 'java -jar ~/distrib/apache-jmeter-5.6.3/bin/ApacheJMeter.jar -n -t performance_test.jmx'
-            }
-        }
+
     }
 }
