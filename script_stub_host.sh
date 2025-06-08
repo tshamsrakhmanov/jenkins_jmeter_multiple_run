@@ -66,4 +66,4 @@ docker build -t stub_1 .
 # build new image of stub
 #
 
-docker run -d stub_1:latest
+docker run -d -p 1234:1234 stub_1:latest
