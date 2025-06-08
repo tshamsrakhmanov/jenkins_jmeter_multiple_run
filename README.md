@@ -1,9 +1,10 @@
 # Распределённый запуск
 
-## Стек: jenkins, jmeter, sh, linux, vm (any), java, springboot, rest-api, groovy
+**_Стек_**\
+jenkins, jmeter, sh, linux, vm (any), java, springboot, rest-api, groovy
 
 
-## Пайплайн запуска
+**_Запуск, использование_**\
 
 Требуется 5 виртуальных машин:
 1. Jenkins
@@ -36,3 +37,5 @@ WantedBy=multi-user.target
 
 8. Пятая машина должна иметь докер и maven - т.к. они оба используются для "чистого" билда заглушки и её деплоя
 
+**_\\ Timur Shamsrakhmanov \\_** \
+**_\\ June 2025  \\_**
