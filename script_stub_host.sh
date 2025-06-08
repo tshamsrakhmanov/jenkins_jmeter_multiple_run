@@ -27,7 +27,7 @@ kill -9 $(ps aux | grep 'stub-1.jar' | grep -v grep | awk '{print $2}')
 echo " #########################"
 echo " ---> STOP DOCKER CONTAINERS"
 echo " #########################"
-sudo -S docker stop $(sudo docker ps -a -q) && sudo -S docker rm $(sudo docker ps -a -q)
+sudo -s docker stop $(sudo docker ps -a -q) && sudo -s docker rm $(sudo docker ps -a -q)
 
 #
 # remove all previous docker images
