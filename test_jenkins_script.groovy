@@ -38,6 +38,5 @@ pipeline {
 				sh 'java -jar ~/distrib/apache-jmeter-5.6.3/bin/ApacheJMeter.jar -n -t performance_test.jmx -l results.jtl -r'
             }
         }
-
     }
 }
