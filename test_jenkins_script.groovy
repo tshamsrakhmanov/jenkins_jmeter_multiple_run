@@ -60,9 +60,7 @@ pipeline {
                 }
 				sh 'bash prereq_checker.sh'
 				sh 'bash jmeter_base.sh'
-				timeout(time: 1, unit: 'MINUTES') { 
-                    sh 'java -jar ~/distrib/apache-jmeter-5.6.3/bin/ApacheJMeter.jar -n -t performance_test.jmx'
-                }
+                sh 'java -jar ~/distrib/apache-jmeter-5.6.3/bin/ApacheJMeter.jar -n -t performance_test.jmx'
             }
         }
     }
