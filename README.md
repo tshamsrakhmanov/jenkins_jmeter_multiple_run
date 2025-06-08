@@ -18,7 +18,9 @@
 2. В домашней директории пользователя должна быть папка distrib и в ней папка с jmeter
 3. Jmeter должен быть сконфигурирован на использование jsk
 4. Третья и четвертая машина должны иметь демона в виде:
-```[Unit]
+
+```
+[Unit]
 Description=JMeter Server
 After=network.target
 
@@ -28,6 +30,8 @@ ExecStart=/home/user/distrib/apache-jmeter-5.6.3/bin/jmeter-server
 Restart=always
 
 [Install]
-WantedBy=multi-user.target```
+WantedBy=multi-user.target
+```
+
 5. Пятая машина должна иметь докер и maven - т.к. они оба используются для "чистого" билда заглушки и её деплоя
 
